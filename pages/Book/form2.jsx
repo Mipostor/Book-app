@@ -1,4 +1,5 @@
 import Button from '@/components/Button'
+import Field from '@/components/Field'
 import React, { useState } from 'react'
 
 export default function FormBook() {
@@ -14,7 +15,7 @@ export default function FormBook() {
 
                     <div className='px-6 py-4'>
                         <div>
-                            <label className='block capitalize mb-[2px]'>judul</label>
+                            {/* <label className='block capitalize mb-[2px]'>judul</label>
                             <input
                                 className={`border w-full h-[2.25rem] px-2 rounded-md ${!(FormBook.title) ? 'border-red-500 focus:outline-red-500' : 'focus:outline-none'}`}
                                 onChange={(e) => {
@@ -30,29 +31,59 @@ export default function FormBook() {
                                 <div className='text-sm text-red-500'>
                                     Field ini tidak boleh kososng!
                                 </div>
-                            )}
+                            )} */}
+                            <Field
+                            isDisable={!(FormBook.title)}
+                            label={'Judul'}
+                            text={'Field ini tidak boleh kososng!'}
+                            change={(e) => {
+                                setFormBook((prev) => {
+                                    return {
+                                        ...prev,
+                                        title: e.target.value
+                                    }
+                                })
+                            }}
+
+                            />
                         </div>
                     </div>
 
                     <div className='px-6 py-4'>
                         <div>
-                            <label className='block capitalize mb-[2px]'>content</label>
-                            <input
-                                className={`border w-full h-[2.25rem] px-2 rounded-md ${!(FormBook.content) ? 'border-red-500 focus:outline-red-500' : 'focus:outline-none'}`}
-                                onChange={(e) => {
-                                    setFormBook((prev) => {
-                                        return {
-                                            ...prev,
-                                            content: e.target.value
-                                        }
-                                    })
-                                }}
+                            <Field
+                            isDisable={!(FormBook.content)}
+                            label={'Content'}
+                            text={'Field ini tidak boleh kososng!'}
+                            change={(e) => {
+                                setFormBook((prev) => {
+                                    return {
+                                        ...prev,
+                                        content: e.target.value
+                                    }
+                                })
+                            }}
+
                             />
-                            {!(FormBook.content) && (
-                                <div className='text-sm text-red-500'>
-                                    Field ini tidak boleh kososng!
-                                </div>
-                            )}
+                        </div>
+                    </div>
+
+                    <div className='px-6 py-4'>
+                        <div>
+                            <Field
+                            isDisable={!(FormBook.penerbit)}
+                            label={'Penerbit'}
+                            text={'Field ini tidak boleh kososng!'}
+                            change={(e) => {
+                                setFormBook((prev) => {
+                                    return {
+                                        ...prev,
+                                        penerbit: e.target.value
+                                    }
+                                })
+                            }}
+
+                            />
                         </div>
                     </div>
 
